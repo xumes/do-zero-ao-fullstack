@@ -8,11 +8,15 @@ app.get('/', (req, res) => {
     });
 });
 
+app.get('/test', (req, res) => {
+    res.send("funcionou!!!");
+})
+
 app.get('/portfolio', (req, res) => {
     // acess db
     const data = [ {
         id: 1,
-        name: 'An awesome project',
+        name: 'Another awesome project !!!',
         createdAt: '2020-12-01'
     },
     {
