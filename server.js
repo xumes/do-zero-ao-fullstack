@@ -2,8 +2,6 @@ const express = require('express');
 
 const app = express();
 
-const PORT = 3080;
-
 app.get('/', (req, res) => {
     res.json({
         'success': true
@@ -14,7 +12,7 @@ app.get('/portfolio', (req, res) => {
     // acess db
     const data = [ {
         id: 1,
-        name: 'My first project',
+        name: 'An awesome project',
         createdAt: '2020-12-01'
     },
     {
@@ -31,8 +29,9 @@ app.get('/portfolio', (req, res) => {
 
     res.json({
         success: true,
-        data: data
+        data
     });
 });
 
+const PORT = 3080;
 app.listen(PORT);
