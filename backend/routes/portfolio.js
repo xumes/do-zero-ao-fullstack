@@ -100,7 +100,6 @@ router.delete('/:slug', async (req, res) => {
             message: err
         })
     }
-
 })
 
 
