@@ -1,16 +1,17 @@
-const leDados = ( ) => {
-  fetch('/api')
-  .then(resultado => {
-    console.log("dados do backend", resultado)
-  })
-}
+import React from 'react'
+
+//Global Style
+import GlobalStyle from './components/GlobalStyle'
+
+// Components
+import AboutUs from './pages/AboutUs'
 
 
 function App() {
   return (
     <div>
-      {leDados()}
-      Bem vindo ao frontend
+      <GlobalStyle />
+      <AboutUs />
     </div>
   );
 }
