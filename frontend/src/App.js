@@ -3,6 +3,10 @@ import React from 'react'
 //Global Style
 import GlobalStyle from './components/GlobalStyle'
 
+//Roteamento
+import { BrowserRouter, Route } from 'react-router-dom'
+
+
 // Components
 import AboutUs from './pages/AboutUs'
 
@@ -11,7 +15,11 @@ function App() {
   return (
     <div>
       <GlobalStyle />
-      <AboutUs />
+      <BrowserRouter>
+        <Route path="/">
+          <AboutUs />
+        </Route>
+      </BrowserRouter>
     </div>
   );
 }
