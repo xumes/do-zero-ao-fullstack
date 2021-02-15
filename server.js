@@ -13,7 +13,7 @@ app.use('/api', api);
 if ( process.env.NODE_ENV === 'production' ) {
     // Express vai entregar os assets de produção
     // Como por exemplo: main.js ou o main.css
-    app.use(express.static('frontend/buid'));
+    app.use(express.static('frontend/build'));
 
 
     // Express vai entregar o index.html, se não reconhecer a rota
