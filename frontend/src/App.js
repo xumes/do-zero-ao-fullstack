@@ -1,19 +1,27 @@
 import React from 'react'
 
-//Global Style
+// Global Style
 import GlobalStyle from './components/GlobalStyle'
 
-//Roteamento
+// Roteamento
 import { Route, Switch } from 'react-router-dom'
+
+// Icons
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { fas } from '@fortawesome/free-solid-svg-icons'
 
 // Components
 import AboutUs from './pages/AboutUs'
 import Portfolio from './pages/Portfolio'
+import PortfolioDetail from './components/PortfolioDetail'
 import ContactMe from './pages/ContactMe'
 import Nav from './components/Nav'
 
 
 function App() {
+
+  library.add( fab, fas )
   return (
     <div>
       <GlobalStyle />
@@ -22,8 +30,11 @@ function App() {
         <Route exact path="/">
           <AboutUs />
         </Route>
-        <Route path="/portfolio">
+        <Route path="/portfolio" exact>
           <Portfolio />
+        </Route>
+        <Route path="/portfolio/:id">
+          <PortfolioDetail />
         </Route>
         <Route path="/contact">
           <ContactMe />
