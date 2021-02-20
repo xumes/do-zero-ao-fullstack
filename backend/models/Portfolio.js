@@ -19,6 +19,9 @@ const portfolioSchema = new Schema( {
         type: String,
         required: true
     },
+    longDescription: {
+        type: String
+    },
     image: {
         type: String,
         required: true

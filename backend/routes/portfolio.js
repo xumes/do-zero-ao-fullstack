@@ -7,6 +7,7 @@ router.post('/', async (req, res) => {
     const portfolio = new Portfolio({
         title: req.body.title,
         description: req.body.description,
+        longDescription: req.body.longDescription,
         image: req.body.image
     });
 
@@ -69,7 +70,8 @@ router.patch('/:slug', async (req, res) => {
             $set: {
                 title: req.body.title,
                 description: req.body.description,
-                image: req.body.image
+                longDescription: req.body.longDescription,
+                image: req.body.image,
             }
         })
 
