@@ -11,7 +11,7 @@ const Portfolio = () => {
     return (
         <PortfolioList>
             <CardList>
-                {data?.data?.data?.map(project => {
+                {data?.data?.map(project => {
                     return( <Card project={project}/> )
                 })}
             </CardList>

@@ -7,7 +7,7 @@ const Card =  ({project}) => {
     return (
             <StyledCard>
                 <Content>
-                    <Image src="https://images.pexels.com/photos/1714208/pexels-photo-1714208.jpeg?cs=srgb&dl=pexels-josh-sorenson-1714208.jpg&fm=jpg" />
+                    <Image src={project.image} />
                     <Info>
                         <h3>{project.title}</h3>
                         <h4>{project.createdAt}</h4>
@@ -21,6 +21,7 @@ const Card =  ({project}) => {
 const StyledCard = styled.div`
     background-color: green;
     min-height: 30vh;
+    box-shadow: blue;
     border-color: #416CD5;
     text-align: center;
     border-radius: 1rem;
@@ -38,7 +39,7 @@ const Content = styled.div`
 
 const Image = styled.img`
     width: 100%;
-    height: 100%;
+    height: 70%;
 `;
 
 const Info = styled.div`
