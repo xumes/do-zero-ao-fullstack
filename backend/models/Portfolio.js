@@ -26,6 +26,13 @@ const portfolioSchema = new Schema( {
         type: String,
         required: true
     },
+    technologies: [
+        {
+            label: String,
+            icon: String,
+            iconType: String
+        }
+    ],
     createdAt: {
         type: Date,
         default: Date.now()
