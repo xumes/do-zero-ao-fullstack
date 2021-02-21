@@ -1,7 +1,22 @@
 import axios from 'axios'
 
-const api = axios.create({
-    baseURL: 'https://sheet.best/api/sheets/a0a7d7bb-3574-487b-a0a3-442a68dcb108'
-})
+export const save = (data) => {
+    const config = {
+        method: 'post',
+        url: 'https://sheet.best/api/sheets/a0a7d7bb-3574-487b-a0a3-442a68dcb108',
+        headers: {
+            "Content-Type": "application/json",
+        },
+        data
+    };
 
-export default api
+    return axios(config)
+        .then(res => {
+            console.log("Dados da planilha", res)
+            return true
+        })
+        .catch(err => {
+            console.log(err)
+            return false
+        })
+}
