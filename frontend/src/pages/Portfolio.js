@@ -3,6 +3,8 @@ import React from 'react'
 import styled from 'styled-components'
 import {useLocation} from 'react-router-dom'
 
+import ScrollTop from '../components/ScrollTop'
+
 import Card from '../components/Card'
 import PortfolioDetail from '../components/PortfolioDetail'
 import {useApi} from '../hooks/useApi'
@@ -30,6 +32,7 @@ const Portfolio = () => {
                     })}
                 </CardList>
             </Hide>
+            <ScrollTop />
         </PortfolioList>
     )
 }
