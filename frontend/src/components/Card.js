@@ -44,13 +44,11 @@ const Content = styled.div`
 `;
 
 const Image = styled.img`
-    flex: 1;
     width: 100%;
     height: 70%;
 `;
 
 const Info = styled.div`
-    flex:1;
     text-align: left;
     padding-left: 1rem;
     display: flex;
