@@ -4,10 +4,10 @@ import styled from 'styled-components'
 
 const ContactForm = () => {
     return(
-        <Form id="contact-form" method="post">
+        <Form >
             <Input>
                 <label>Name:</label>
-                <input type="text"/>
+                <input type="text" />
             </Input>
             <Input>
                 <label>Email:</label>
@@ -15,7 +15,7 @@ const ContactForm = () => {
             </Input>
             <Input>
                 <label>Message:</label>
-                <textarea rows='5' />
+                <textarea rows='5'/>
             </Input>
             <button type="submit">Submit</button>
         </Form>

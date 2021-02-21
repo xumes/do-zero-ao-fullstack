@@ -14,7 +14,6 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 // Components
 import AboutUs from './pages/AboutUs'
 import Portfolio from './pages/Portfolio'
-import PortfolioDetail from './components/PortfolioDetail'
 import ContactMe from './pages/ContactMe'
 import Nav from './components/Nav'
 
@@ -30,11 +29,8 @@ function App() {
         <Route exact path="/">
           <AboutUs />
         </Route>
-        <Route path="/portfolio" exact>
+        <Route path={['/portfolio:id', '/portfolio']}>
           <Portfolio />
-        </Route>
-        <Route path="/portfolio/:slug">
-          <PortfolioDetail />
         </Route>
         <Route path="/contact">
           <ContactMe />
