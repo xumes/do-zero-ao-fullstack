@@ -1,14 +1,42 @@
 import React, {useState} from 'react'
 
-import {Table, Button, Image, Modal} from 'react-bootstrap'
+import {Table, Button, Image} from 'react-bootstrap'
 import styled from 'styled-components'
 import moment from 'moment'
 
 import {useApi} from '../../hooks/useApi'
+import Dialog from './Dialog'
 
 const PortfolioList = () => {
-    const [ show, setShow] = useState(false)
+    const [action, setAction] = useState({
+        del: {
+            header: 'Confirm Delete?',
+            btnVariant: 'danger',
+            btnLabel: 'Confirm?'
+        },
+        edit: {
+            header: 'Edit Portfolio',
+            btnVariant: 'primary',
+            btnLabel: 'Save'
+        },
+        add: {
+            header: 'Add New Portfolio',
+            btnVariant: 'primary',
+            btnLabel: 'Save'
+        }
+    })
+    const [currentAction, setCurrentAction] = useState({
+        header: '',
+        btnVariant:'',
+        btnLabel: ''
+    })
+    const [show, setShow] = useState(false)
     const {data} = useApi('/portfolio')
+
+    const handleShow = (slug, actn) => {
+        setCurrentAction(actn)
+        setShow(true)
+    }
 
     return(
         <div>
@@ -33,7 +61,7 @@ const PortfolioList = () => {
                                 <td>{moment(item.createdAt).format("MMM-YYYY")}</td>
                                 <td>
                                     <Button variant="info">Edit</Button>
-                                    <Button variant="danger" onClick={()=>setShow(true)}>Delete</Button>
+                                    <Button variant="danger" onClick={() => handleShow(item.slug, action.del)}>Delete</Button>
                                 </td>
                             </tr>
                         )
@@ -41,27 +69,7 @@ const PortfolioList = () => {
                 </tbody>
             </Table>
 
-            {/* {Refatorar} */}
-                <Modal
-                    show={show}
-                    onHide={()=> setShow(false)}
-                    backdrop="static"
-                    keyboard={false}
-                >
-                    <Modal.Header closeButton>
-                        <Modal.Title>
-                            Confirm
-                        </Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        Are you sure you want to delete?
-                    </Modal.Body>
-                    <Modal.Footer>
-                    <Button variant="secondary" onClick={()=>setShow(false)}>Close</Button>
-                    <Button variant="danger" onClick={()=>setShow(false)}>Confirm</Button>
-                    </Modal.Footer>
-                </Modal>
-            {/* {Refatorar} */}
+            <Dialog show={show} setShow={setShow} currentAction={currentAction} />
         </div>
     )
 }
