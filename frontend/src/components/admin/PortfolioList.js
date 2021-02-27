@@ -1,9 +1,15 @@
-import React from 'react'
+import React, {useState} from 'react'
 
-import {Table, Button, Image} from 'react-bootstrap'
+import {Table, Button, Image, Modal} from 'react-bootstrap'
 import styled from 'styled-components'
+import moment from 'moment'
+
+import {useApi} from '../../hooks/useApi'
 
 const PortfolioList = () => {
+    const [ show, setShow] = useState(false)
+    const {data} = useApi('/portfolio')
+
     return(
         <div>
             <Table striped bordered hover variant="dark">
@@ -16,37 +22,46 @@ const PortfolioList = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>
-                            <Logo src="https://images.pexels.com/photos/1714208/pexels-photo-1714208.jpeg" thumbnail />
-                        </td>
-                        <td>Do Zero ao Fullstack na Udemy com MERN</td>
-                        <td>2020-12-23</td>
-                        <td>
-                            <Button variant="info">Edit</Button>
-                            <Button variant="danger">Delete</Button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>My Portfolio</td>
-                        <td>2020-12-23</td>
-                        <td>
-                            <Button variant="info">Edit</Button>
-                            <Button variant="danger">Delete</Button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Novo Projeto em Python</td>
-                        <td>2020-12-23</td>
-                        <td>
-                            <Button variant="info">Edit</Button>
-                            <Button variant="danger">Delete</Button>
-                        </td>
-                    </tr>
+
+                    {data?.data?.map(item => {
+                        return (
+                            <tr>
+                                <td>
+                                    <Logo src={item.image} thumbnail />
+                                </td>
+                                <td>{item.title}</td>
+                                <td>{moment(item.createdAt).format("MMM-YYYY")}</td>
+                                <td>
+                                    <Button variant="info">Edit</Button>
+                                    <Button variant="danger" onClick={()=>setShow(true)}>Delete</Button>
+                                </td>
+                            </tr>
+                        )
+                    })}
                 </tbody>
             </Table>
+
+            {/* {Refatorar} */}
+                <Modal
+                    show={show}
+                    onHide={()=> setShow(false)}
+                    backdrop="static"
+                    keyboard={false}
+                >
+                    <Modal.Header closeButton>
+                        <Modal.Title>
+                            Confirm
+                        </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        Are you sure you want to delete?
+                    </Modal.Body>
+                    <Modal.Footer>
+                    <Button variant="secondary" onClick={()=>setShow(false)}>Close</Button>
+                    <Button variant="danger" onClick={()=>setShow(false)}>Confirm</Button>
+                    </Modal.Footer>
+                </Modal>
+            {/* {Refatorar} */}
         </div>
     )
 }
