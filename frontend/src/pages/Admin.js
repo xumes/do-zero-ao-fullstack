@@ -3,6 +3,7 @@ import React from 'react'
 import {Jumbotron, Tabs, Tab, Container} from 'react-bootstrap'
 
 import PortfolioList from '../components/admin/PortfolioList'
+import PortfolioForm from '../components/admin/PortfolioForm'
 
 const Admin = () => {
     return(
@@ -20,6 +21,9 @@ const Admin = () => {
                 </Tab>
                 <Tab eventKey="tech" title="Technologies">
                     <h2>Technologies</h2>
+                </Tab>
+                <Tab eventKey="form" title="Form">
+                    <PortfolioForm />
                 </Tab>
             </Tabs>
         </Container>
