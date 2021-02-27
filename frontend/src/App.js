@@ -4,7 +4,7 @@ import React from 'react'
 import GlobalStyle from './components/GlobalStyle'
 
 // Roteamento
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, useLocation } from 'react-router-dom'
 
 // Icons
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -16,25 +16,22 @@ import AboutUs from './pages/AboutUs'
 import Portfolio from './pages/Portfolio'
 import ContactMe from './pages/ContactMe'
 import Nav from './components/Nav'
+import Admin from './pages/Admin'
 
 
 function App() {
-
+  const location = useLocation()
   library.add( fab, fas )
+
   return (
     <div>
       <GlobalStyle />
-      <Nav />
+      {location.pathname !== '/admin' && <Nav />}
       <Switch>
-        <Route exact path="/">
-          <AboutUs />
-        </Route>
-        <Route path={['/portfolio:id', '/portfolio']}>
-          <Portfolio />
-        </Route>
-        <Route path="/contact">
-          <ContactMe />
-        </Route>
+        <Route exact path="/" component={AboutUs} />
+        <Route path={['/portfolio:id', '/portfolio']} component={Portfolio} />
+        <Route path="/contact" component={ContactMe} />
+        <Route path='/admin' component={Admin} />
       </Switch>
     </div>
   );
