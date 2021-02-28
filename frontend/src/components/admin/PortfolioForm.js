@@ -1,8 +1,9 @@
 import React from 'react'
 
-import {Form, Container} from 'react-bootstrap'
+import {Form, Container, CardColumns, Card, Button, Col} from 'react-bootstrap'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-const PortfolioForm = ({title, setTitle, shortDescription, setShortDescription, longDescription, setLongDescription, image, setImage, slug}) => {
+const PortfolioForm = ({title, setTitle, shortDescription, setShortDescription, longDescription, setLongDescription, image, setImage, slug, tech, setTech}) => {
     return(
         <Container>
             <Form>
@@ -40,6 +41,50 @@ const PortfolioForm = ({title, setTitle, shortDescription, setShortDescription, 
                     />
                 </Form.Group>
             </Form>
+
+            <CardColumns>
+                {
+                    tech?.map(technology => {
+                        return (
+                            <Card>
+                                <Card.Body>
+                                    <Card.Text>
+                                        <FontAwesomeIcon icon={[technology.iconType, technology.icon]} size="3x" /> {technology.label}
+                                    </Card.Text>
+                                </Card.Body>
+                                <Card.Footer>
+                                    <Button size="sm" variant="danger">remover</Button>
+                                </Card.Footer>
+                            </Card>
+                        )
+                    })
+                }
+
+            </CardColumns>
+
+            <Form inline>
+                <Form.Row>
+                    <Col xs="auto">
+                        <Form.Control
+                            placeholder="Type: fab, fas"
+                        />
+                    </Col>
+                    <Col xs="auto">
+                        <Form.Control
+                            placeholder="Icon: github, database"
+                        />
+                    </Col>
+                    <Col xs="auto">
+                        <Form.Control
+                            placeholder="Label: Github, MongoDB"
+                        />
+                    </Col>
+                    <Col xs="auto">
+                        <Button className="mb-2">Add</Button>
+                    </Col>
+                </Form.Row>
+            </Form>
+
         </Container>
     )
 }

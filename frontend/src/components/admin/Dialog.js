@@ -9,6 +9,7 @@ const Dialog = ({show, setShow, currentAction, children}) => {
             onHide={()=> setShow(false)}
             backdrop="static"
             keyboard={false}
+            size="lg"
         >
             <Modal.Header closeButton>
                 <Modal.Title>

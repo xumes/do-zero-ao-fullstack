@@ -14,6 +14,7 @@ const PortfolioList = () => {
     const [longDescription, setLongDescription] = useState()
     const [image, setImage] = useState()
     const [slug, setSlug] = useState()
+    const [tech, setTech] = useState()
     const [action] = useState({
         del: {
             header: 'Confirm Delete?',
@@ -52,6 +53,7 @@ const PortfolioList = () => {
         setLongDescription(portfolio.longDescription)
         setImage(portfolio.image)
         setSlug(portfolio.slug)
+        setTech(portfolio.technologies)
     }
 
     return(
@@ -100,6 +102,8 @@ const PortfolioList = () => {
                         image={image}
                         setImage={setImage}
                         slug={slug}
+                        tech={tech}
+                        setTech={setTech}
                     />
                 )}
             </Dialog>
