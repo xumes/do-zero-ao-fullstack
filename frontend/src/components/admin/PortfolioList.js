@@ -9,24 +9,30 @@ import Dialog from './Dialog'
 import PortfolioForm from './PortfolioForm'
 
 const PortfolioList = () => {
-    const [action, setAction] = useState({
+    const [title, setTitle] = useState()
+    const [shortDescription, setShortDescription] = useState()
+    const [longDescription, setLongDescription] = useState()
+    const [image, setImage] = useState()
+    const [slug, setSlug] = useState()
+    const [action] = useState({
         del: {
             header: 'Confirm Delete?',
             btnVariant: 'danger',
             btnLabel: 'Confirm?',
+            showBody: true,
             body: 'Are you sure you want to delete it?'
         },
         edit: {
             header: 'Edit Portfolio',
             btnVariant: 'primary',
             btnLabel: 'Save',
-            body: <PortfolioForm />
+            showBody: false
         },
         add: {
             header: 'Add New Portfolio',
             btnVariant: 'primary',
             btnLabel: 'Save',
-            body: <PortfolioForm />
+            showbody: false
         }
     })
     const [currentAction, setCurrentAction] = useState({
@@ -38,9 +44,14 @@ const PortfolioList = () => {
     const [show, setShow] = useState(false)
     const {data} = useApi('/portfolio')
 
-    const handleShow = (slug, actn) => {
+    const handleShow = (portfolio, actn) => {
         setCurrentAction(actn)
         setShow(true)
+        setTitle(portfolio.title)
+        setShortDescription(portfolio.description)
+        setLongDescription(portfolio.longDescription)
+        setImage(portfolio.image)
+        setSlug(portfolio.slug)
     }
 
     return(
@@ -66,8 +77,8 @@ const PortfolioList = () => {
                                 <td>{item.title}</td>
                                 <td>{moment(item.createdAt).format("MMM-YYYY")}</td>
                                 <td>
-                                    <Button variant="info" onClick={() => handleShow(item.slug, action.edit)}>Edit</Button>
-                                    <Button variant="danger" onClick={() => handleShow(item.slug, action.del)}>Delete</Button>
+                                    <Button variant="info" onClick={() => handleShow(item, action.edit)}>Edit</Button>
+                                    <Button variant="danger" onClick={() => handleShow(item, action.del)}>Delete</Button>
                                 </td>
                             </tr>
                         )
@@ -76,7 +87,21 @@ const PortfolioList = () => {
             </Table>
 
             <Dialog show={show} setShow={setShow} currentAction={currentAction}>
-                {currentAction.body}
+                {currentAction.showBody && currentAction.body}
+
+                {!currentAction.showBody && (
+                    <PortfolioForm
+                        title={title}
+                        setTitle={setTitle}
+                        shortDescription={shortDescription}
+                        setShortDescription={setShortDescription}
+                        longDescription={longDescription}
+                        setLongDescription={setLongDescription}
+                        image={image}
+                        setImage={setImage}
+                        slug={slug}
+                    />
+                )}
             </Dialog>
         </Container>
     )
