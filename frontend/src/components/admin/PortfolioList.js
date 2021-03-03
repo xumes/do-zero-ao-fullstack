@@ -12,14 +12,12 @@ import {deleteItem, editItem} from '../../services/api'
 const PortfolioList = () => {
     const handleDel = (slug) => {
         deleteItem(slug)
-        console.log("Deletado com sucesso!", slug)
     }
-    const handleAdd = () =>{
-        console.log("Adicionado com sucesso!")
+    const handleAdd = (slug, data) =>{
+        addPortfolioItem(data)
     }
-    const handleEdit = (slug) => {
-        editItem(slug)
-        console.log("Editado com sucesso!", slug)
+    const handleEdit = (slug, data) => {
+        editPortfolioItem(slug, data)
     }
     const [title, setTitle] = useState()
     const [shortDescription, setShortDescription] = useState()
@@ -69,6 +67,30 @@ const PortfolioList = () => {
         setImage(portfolio?.image || '')
         setSlug(portfolio?.slug || '')
         setTech(portfolio?.technologies || [])
+    }
+
+    const addPortfolioItem = (data) => {
+        const newPortfolioItem = {
+            title: data.title,
+            description: data.shortDescription,
+            longDescription: data.longDescription,
+            image: data.image,
+            technologies: data.tech
+        }
+
+        console.log("Meu novo item de portfolio", newPortfolioItem)
+    }
+
+    const editPortfolioItem = (slug, data) => {
+        const newPortfolioItem = {
+            title: data.title,
+            description: data.shortDescription,
+            longDescription: data.longDescription,
+            image: data.image,
+            technologies: data.tech
+        }
+
+        console.log("Meu item de portfolio alterado", newPortfolioItem)
     }
 
     return(

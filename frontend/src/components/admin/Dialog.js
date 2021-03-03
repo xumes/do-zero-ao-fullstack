@@ -4,7 +4,7 @@ import {Modal, Button} from 'react-bootstrap'
 
 const Dialog = ({show, setShow, currentAction, slug, children}) => {
     const handleAction = () => {
-        currentAction.callback(slug)
+        currentAction.callback(slug, children[1].props)
         setShow(false)
     }
     return(
