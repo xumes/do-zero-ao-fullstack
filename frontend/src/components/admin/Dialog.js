@@ -3,6 +3,10 @@ import React from 'react'
 import {Modal, Button} from 'react-bootstrap'
 
 const Dialog = ({show, setShow, currentAction, children}) => {
+    const handleAction = () => {
+        currentAction.callback()
+        setShow(false)
+    }
     return(
         <Modal
             animation={false}
@@ -22,7 +26,7 @@ const Dialog = ({show, setShow, currentAction, children}) => {
             </Modal.Body>
             <Modal.Footer>
             <Button variant="secondary" onClick={()=>setShow(false)}>Close</Button>
-            <Button variant={currentAction.btnVariant} onClick={()=>setShow(false)}>{currentAction.btnLabel}</Button>
+            <Button variant={currentAction.btnVariant} onClick={()=>handleAction()}>{currentAction.btnLabel}</Button>
             </Modal.Footer>
         </Modal>
     )

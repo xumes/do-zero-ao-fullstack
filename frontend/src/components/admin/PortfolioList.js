@@ -9,6 +9,15 @@ import Dialog from './Dialog'
 import PortfolioForm from './PortfolioForm'
 
 const PortfolioList = () => {
+    const handleDel = () => {
+        console.log("Deletado com sucesso!")
+    }
+    const handleAdd = () =>{
+        console.log("Adicionado com sucesso!")
+    }
+    const handleEdit = () => {
+        console.log("Editado com sucesso!")
+    }
     const [title, setTitle] = useState()
     const [shortDescription, setShortDescription] = useState()
     const [longDescription, setLongDescription] = useState()
@@ -21,19 +30,22 @@ const PortfolioList = () => {
             btnVariant: 'danger',
             btnLabel: 'Confirm?',
             showBody: true,
-            body: 'Are you sure you want to delete it?'
+            body: 'Are you sure you want to delete it?',
+            callback: handleDel
         },
         edit: {
             header: 'Edit Portfolio',
             btnVariant: 'primary',
             btnLabel: 'Save',
-            showBody: false
+            showBody: false,
+            callback: handleEdit
         },
         add: {
             header: 'Add New Portfolio',
             btnVariant: 'primary',
             btnLabel: 'Save',
-            showbody: false
+            showbody: false,
+            callback: handleAdd
         }
     })
     const [currentAction, setCurrentAction] = useState({
