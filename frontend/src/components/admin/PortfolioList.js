@@ -48,12 +48,12 @@ const PortfolioList = () => {
     const handleShow = (portfolio, actn) => {
         setCurrentAction(actn)
         setShow(true)
-        setTitle(portfolio.title)
-        setShortDescription(portfolio.description)
-        setLongDescription(portfolio.longDescription)
-        setImage(portfolio.image)
-        setSlug(portfolio.slug)
-        setTech(portfolio.technologies)
+        setTitle(portfolio?.title || '')
+        setShortDescription(portfolio?.description || '')
+        setLongDescription(portfolio?.longDescription || '')
+        setImage(portfolio?.image || '')
+        setSlug(portfolio?.slug || '')
+        setTech(portfolio?.technologies || [])
     }
 
     return(
