@@ -2,9 +2,9 @@ import React from 'react'
 
 import {Modal, Button} from 'react-bootstrap'
 
-const Dialog = ({show, setShow, currentAction, children}) => {
+const Dialog = ({show, setShow, currentAction, slug, children}) => {
     const handleAction = () => {
-        currentAction.callback()
+        currentAction.callback(slug)
         setShow(false)
     }
     return(
@@ -18,7 +18,7 @@ const Dialog = ({show, setShow, currentAction, children}) => {
         >
             <Modal.Header closeButton>
                 <Modal.Title>
-                    {currentAction.header}
+                    {currentAction.header} {slug}
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>

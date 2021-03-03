@@ -7,16 +7,19 @@ import moment from 'moment'
 import {useApi} from '../../hooks/useApi'
 import Dialog from './Dialog'
 import PortfolioForm from './PortfolioForm'
+import {deleteItem, editItem} from '../../services/api'
 
 const PortfolioList = () => {
-    const handleDel = () => {
-        console.log("Deletado com sucesso!")
+    const handleDel = (slug) => {
+        deleteItem(slug)
+        console.log("Deletado com sucesso!", slug)
     }
     const handleAdd = () =>{
         console.log("Adicionado com sucesso!")
     }
-    const handleEdit = () => {
-        console.log("Editado com sucesso!")
+    const handleEdit = (slug) => {
+        editItem(slug)
+        console.log("Editado com sucesso!", slug)
     }
     const [title, setTitle] = useState()
     const [shortDescription, setShortDescription] = useState()
@@ -100,7 +103,7 @@ const PortfolioList = () => {
                 </tbody>
             </Table>
 
-            <Dialog show={show} setShow={setShow} currentAction={currentAction}>
+            <Dialog show={show} setShow={setShow} currentAction={currentAction} slug={slug}>
                 {currentAction.showBody && currentAction.body}
 
                 {!currentAction.showBody && (
