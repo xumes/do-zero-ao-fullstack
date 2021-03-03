@@ -4,9 +4,9 @@ import {Form, Container, CardColumns, Card, Button, Col} from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const PortfolioForm = ({title, setTitle, shortDescription, setShortDescription, longDescription, setLongDescription, image, setImage, slug, tech, setTech}) => {
-    const [type, setType] = useState()
-    const [icon, setIcon] = useState()
-    const [label, setLabel] = useState()
+    const [type, setType] = useState('')
+    const [icon, setIcon] = useState('')
+    const [label, setLabel] = useState('')
 
     const handleRemoveItem = (id) => {
         const newTech = tech.filter(el=> el._id !== id)

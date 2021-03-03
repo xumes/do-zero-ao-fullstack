@@ -5,6 +5,7 @@ import {Modal, Button} from 'react-bootstrap'
 const Dialog = ({show, setShow, currentAction, children}) => {
     return(
         <Modal
+            animation={false}
             show={show}
             onHide={()=> setShow(false)}
             backdrop="static"

@@ -72,7 +72,7 @@ const PortfolioList = () => {
 
                     {data?.data?.map(item => {
                         return (
-                            <tr>
+                            <tr key={item.slug}>
                                 <td>
                                     <Logo src={item.image} thumbnail />
                                 </td>

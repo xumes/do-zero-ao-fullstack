@@ -12,7 +12,7 @@ const Admin = () => {
                 <h1>Admin Panel</h1>
             </Jumbotron>
 
-            <Tabs defaultActiveKey="home" id="tab-navigation">
+            <Tabs transition={false} defaultActiveKey="home" id="tab-navigation">
                 <Tab eventKey="home" title="Home">
                     <h2>Welcome</h2>
                 </Tab>
