@@ -19,6 +19,32 @@ export const deleteItem = (slug) => {
         })
 }
 
-export const editItem = (slug) => {
-    console.log("Editado no backend", slug)
+export const editItem = (slug, {title,description,longDescription, image, technologies}) => {
+    axios
+        .patch(`/api/portfolio/${slug}`, {
+            title, description, longDescription, image, technologies
+        })
+        .then(res=> {
+            console.log("Alterado com sucesso", res)
+            return res
+        })
+        .catch(e=> {
+            console.log("Erro", e)
+            return e
+        })
+}
+
+export const addItem = ({title,description,longDescription, image, technologies}) => {
+    axios
+        .post(`/api/portfolio`, {
+            title, description, longDescription, image, technologies
+        })
+        .then(res=> {
+            console.log("Adicionado com sucesso", res)
+            return res
+        })
+        .catch(e=> {
+            console.log("Erro", e)
+            return e
+        })
 }

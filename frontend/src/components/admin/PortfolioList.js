@@ -7,7 +7,7 @@ import moment from 'moment'
 import {useApi} from '../../hooks/useApi'
 import Dialog from './Dialog'
 import PortfolioForm from './PortfolioForm'
-import {deleteItem, editItem} from '../../services/api'
+import {deleteItem, editItem, addItem} from '../../services/api'
 
 const PortfolioList = () => {
     const handleDel = (slug) => {
@@ -70,27 +70,37 @@ const PortfolioList = () => {
     }
 
     const addPortfolioItem = (data) => {
+        const tech = data.tech.map(i => {
+            delete i._id
+            return i
+        })
+
         const newPortfolioItem = {
             title: data.title,
             description: data.shortDescription,
             longDescription: data.longDescription,
             image: data.image,
-            technologies: data.tech
+            technologies: tech
         }
 
-        console.log("Meu novo item de portfolio", newPortfolioItem)
+        addItem(newPortfolioItem)
     }
 
     const editPortfolioItem = (slug, data) => {
+        const tech = data.tech.map(i => {
+            delete i._id
+            return i
+        })
+
         const newPortfolioItem = {
             title: data.title,
             description: data.shortDescription,
             longDescription: data.longDescription,
             image: data.image,
-            technologies: data.tech
+            technologies: tech
         }
 
-        console.log("Meu item de portfolio alterado", newPortfolioItem)
+        editItem(slug, newPortfolioItem)
     }
 
     return(
