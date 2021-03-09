@@ -3,7 +3,7 @@ import React from 'react'
 import {Jumbotron, Tabs, Tab, Container} from 'react-bootstrap'
 
 import PortfolioList from '../components/admin/PortfolioList'
-import PortfolioForm from '../components/admin/PortfolioForm'
+import WelcomeTab from '../components/admin/WelcomeTab'
 
 const Admin = () => {
     return(
@@ -14,16 +14,10 @@ const Admin = () => {
 
             <Tabs transition={false} defaultActiveKey="home" id="tab-navigation">
                 <Tab eventKey="home" title="Home">
-                    <h2>Welcome</h2>
+                    <WelcomeTab />
                 </Tab>
                 <Tab eventKey="portfolio" title="Portfolio">
                     <PortfolioList />
-                </Tab>
-                <Tab eventKey="tech" title="Technologies">
-                    <h2>Technologies</h2>
-                </Tab>
-                <Tab eventKey="form" title="Form">
-                    <PortfolioForm />
                 </Tab>
             </Tabs>
         </Container>
