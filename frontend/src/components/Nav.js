@@ -6,6 +6,11 @@ import styled from 'styled-components'
 //Navigation
 import {Link} from 'react-router-dom'
 
+import Userfront from '@userfront/react'
+import {LogoutButton} from './auth/Authentication'
+
+Userfront.init('9ny8dvbd')
+
 const Nav = () => {
     const menuOptions = {
         about: '<About Me />',
@@ -20,6 +25,15 @@ const Nav = () => {
                 <li><Link to='/' >{menuOptions.about}</Link></li>
                 <li><Link to='/portfolio'>{menuOptions.portfolio}</Link></li>
                 <li><Link to='/contact'>{menuOptions.contact}</Link></li>
+                {
+                    !Userfront.accessToken() && (
+                        <>
+                            <li><Link to='/login'>Login</Link></li>
+                            <li><Link to='/signup'>Cadastro</Link></li>
+                        </>
+                    )
+                }
+                {Userfront.accessToken() && <li><LogoutButton /></li>}
             </ul>
         </StyledNav>
     )
@@ -41,7 +55,7 @@ const StyledNav = styled.nav`
         list-style: none;
     }
     li{
-        padding-left: 10rem;
+        padding-left: 5rem;
     }
     a{
         color: white;
