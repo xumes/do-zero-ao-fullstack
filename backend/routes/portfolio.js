@@ -49,6 +49,10 @@ router.get('/', async (req, res) => {
     }
     console.log("AuthHeader", authHeader)
 
+    const token = authHeader.split(' ')[1]
+
+    const user = jwt.verify(token, secret)
+    console.log(user)
 
     try{
         const portfolio = await Portfolio.find()
