@@ -2,17 +2,8 @@ const router = require('express').Router();
 
 const jwt = require('jsonwebtoken')
 
-const secret = `-----BEGIN RSA PUBLIC KEY-----
-MIIBigKCAYEAnZig4cjMvEO6+IFl0EDS8QJGegtOQxiSpoN1mL4wHWfLVtTpR9LP
-MGMSFL0y8DIu4j9xyhpRDmJN5HRvoNBwAlgtLNJQEGSNX2AfnlY5hkahZZXYVfpq
-VGnMu/pLPxygtXLtvUGTYHTexV0wuQdZtB6aI8Lr84lzZwMIoo5ZZFsekl2ZTOHN
-ZykKBf2jnGFp8VafxMBDkll2XjyB5mphGhG7N+vLmfKcB6t8jembO0RLmqLJYU0x
-nzsMyQwRz7fmDDvAe4DU6OHMrifpOGFnmkxmX0mQ2DldVjeSLNe8dScHv9/JcoXk
-y7ISpI5YACA41AwgY4+g8Jw5LiIHSfKRQfeLkP2nEHmtH4Kcj+RCsGrDuU3xgZin
-y5P9VhjRZIOE3kO50Jip3iOpcnvFhCN09XaP29V+apPDghQX6GxMFY2VyDTTcfD/
-T/Al3aVaM97fvM4SfjBdm1Fu0+fPWKiwCTPqFGjIGnkhACL3453IKxvhPaD6lOXn
-w04qPtmsMzRDAgMBAAE=
------END RSA PUBLIC KEY-----`
+const secret_base64 = process.env.JWT_SECRET
+const secret = Buffer.from(secret_base64, 'base64')
 
 const { update } = require('../models/Portfolio');
 const Portfolio = require('../models/Portfolio');
