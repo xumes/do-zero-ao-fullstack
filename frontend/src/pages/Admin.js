@@ -14,6 +14,8 @@ Userfront.init('9ny8dvbd')
 
 
 const Admin = ({location}) => {
+    const projectId = '9ny8dvbd'
+
     if (!Userfront.accessToken()) {
         return (
             <Redirect to={{
@@ -23,9 +25,20 @@ const Admin = ({location}) => {
             />
         )
     }
-
     const accessData = jwt_decode(Userfront.accessToken())
     const userData = jwt_decode(Userfront.idToken())
+
+    const roles = accessData.authorization[projectId].roles
+    const isAdmin = roles.includes('admin')
+
+    if (!isAdmin) {
+        return (
+            <Redirect to={{
+                pathname: '/portfolio',
+            }}
+            />
+        )
+    }
 
     console.log("Access", accessData)
     console.log("user", userData)
