@@ -1,6 +1,7 @@
 import React from 'react'
 
 import styled from 'styled-components'
+import { motion } from 'framer-motion'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {useHistory} from 'react-router-dom'
 
@@ -20,12 +21,12 @@ const PortfolioDetail = ({slug}) => {
 
     return (
         <CardShaddow className="shaddow" onClick={exitDetailHandler}>
-            <Detail>
+            <Detail layoutId={slug}>
                 <Stats>
                     <div>
-                        <Title>{data?.data?.title}</Title>
+                        <Title layoutId={`title ${slug}`}>{data?.data?.title}</Title>
                         <DescriptionShort>
-                            <p>{data?.data?.description}</p>
+                            <p layoutId={`descr ${slug}`}>{data?.data?.description}</p>
                         </DescriptionShort>
                     </div>
                     <Info>
@@ -47,7 +48,7 @@ const PortfolioDetail = ({slug}) => {
                 <Description>
                     <p>{data?.data?.longDescription}</p>
                 </Description>
-                <img src={data?.data?.image} />
+                <motion.img src={data?.data?.image} layoutId={`image ${slug}`} />
             </Detail>
         </CardShaddow>
     )
@@ -55,7 +56,7 @@ const PortfolioDetail = ({slug}) => {
 
 const CardShaddow = styled.div`
     width: 100%;
-    min-height: 90vh;
+    min-height: 100vh;
     overflow-y: scroll;
     background: rgba(0, 0, 0, 0.5);
     position: fixed;
@@ -71,15 +72,14 @@ const CardShaddow = styled.div`
     &::-webkit-scrollbar-track {
         background: white;
     }
-
 `;
 
 const Detail = styled.div`
     width: 80%;
     min-height: 80vh;
+    border-radius: 1rem;
     background: white;
     position: absolute;
-    border-radius: 1rem;
     left: 10%;
     top: 15%;
     margin-bottom: 10%;
@@ -87,7 +87,9 @@ const Detail = styled.div`
     img {
         width: 100%;
         object-fit: cover;
-        height: 50vh;
+    }
+    @media (max-width: 1300px) {
+        top: 28%;
     }
 `;
 
@@ -111,7 +113,7 @@ const Description = styled.div`
 const Info = styled.div`
     text-align: center;
     min-width: 300px;
-    h3 {
+    h3{
         color: #696969;
     }
 `;
@@ -122,12 +124,16 @@ const DescriptionShort = styled(Description)`
 
 const Technologies = styled.div`
     width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(45px, 1fr));
+    grid-column-gap: 0.2rem;
+    grid-row-gap: 0.1rem;
     padding-top: 1rem;
     svg {
         color: #416CD5;
+    }
+    img {
+        margin-left: 3rem;
     }
 `;
 

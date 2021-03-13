@@ -6,7 +6,7 @@ import SocialNetworkSection from '../components/SocialNetworkSection'
 import ContactForm from '../components/ContactForm'
 
 import {motion} from 'framer-motion'
-import {pageAnimation} from '../animation'
+import {pageAnimation, titleAnimation, sliderContainer, slider} from '../animation'
 
 
 const ContactMe = () => {
@@ -17,11 +17,23 @@ const ContactMe = () => {
             exit='exit'
             variants={pageAnimation}
         >
+        <motion.div variants={sliderContainer}>
+            <Frame1 variants={slider} />
+            <Frame2 variants={slider} />
+            <Frame3 variants={slider} />
+            <Frame4 variants={slider} />
+        </motion.div>
+
             <Title>
-                <h2>Get in touch</h2>
+                <Hide>
+                    <motion.h2 variants={titleAnimation}>Get in <span>touch</span>.</motion.h2>
+                </Hide>
             </Title>
             <Areas>
-                <ContactForm />
+                <FormArea>
+                    <ContactForm />
+                </FormArea>
+
                 <SocialNetworkSection />
             </Areas>
         </ContactStyled>
@@ -41,6 +53,10 @@ const Title = styled.div`
     }
 `;
 
+const Hide = styled.div`
+  overflow: hidden;
+`
+
 const Areas = styled.div`
     display: flex;
     flex-direction: row;
@@ -48,5 +64,28 @@ const Areas = styled.div`
     align-items: center;
 `;
 
+const FormArea = styled(motion.div)`
+  min-width: 80vh;
+`
+
+// Frame Animation
+const Frame1 = styled(motion.div)`
+  position: fixed;
+  left: 0;
+  top: 10%;
+  width: 100%;
+  height: 100vh;
+  background: #fffebf;
+  z-index: 2;
+`
+const Frame2 = styled(Frame1)`
+  background: #ff8efb;
+`
+const Frame3 = styled(Frame1)`
+  background: #8ed2ff;
+`
+const Frame4 = styled(Frame1)`
+  background: #8effa0;
+`
 
 export default ContactMe

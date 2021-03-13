@@ -22,6 +22,11 @@ const ContactForm = () => {
     const contactMeHandler = async (e) => {
         e.preventDefault()
 
+        if ( name === '' || email === '' || message === '') {
+            setErro(true)
+            return
+        }
+
         const data = {
             Nome: name,
             Email: email,
@@ -77,13 +82,13 @@ const ContactForm = () => {
 const Input = styled.div`
     display: flex;
     flex-direction: column;
-    min-width: 60vh;
+    min-width:60vh;
     label {
         color: white;
         padding-top: 1rem;
     }
-    input {
-        border: 2px solid yellow;
+    input[type=text] {
+        border: 2px 0 solid yellow;
         padding: 12px 20px;
         border-radius: 10%;
         width: 100%;
@@ -93,11 +98,18 @@ const Input = styled.div`
         background-color: #416CD5;
         color: yellow;
     }
+    input[type=email] {
+        border: 2px 0 solid yellow;
+        padding: 12px 20px;
+        border-radius: 10%;
+        width: 100%;
+        height: 100%;
+    }
     textarea {
         width: 100%;
-        height: 150%;
+        height: 150px;
         padding: 12px 20px;
-        box-align: border-box;
+        box-sizing: border-box;
         border: 2px solid #ccc;
         border-radius: 4px;
         background-color: #f8f8f8;
@@ -115,6 +127,10 @@ const Form = styled.form`
     }
     h4{
         margin-top: 1rem;
+    }
+    @media (max-width: 1500px) {
+        padding: 4rem;
+        font-size: 1rem;
     }
 `;
 

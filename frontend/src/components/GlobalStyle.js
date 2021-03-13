@@ -7,8 +7,15 @@ const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
     }
 
+    html{
+        @media (max-width: 1700px){
+            font-size: 75%;
+        }
+    }
+
     body{
         background: #1b1b1b;
+        font-family: 'Roboto', sans-serif;
         overflow-x: hidden;
         text-decoration: none;
     }
@@ -18,10 +25,11 @@ const GlobalStyle = createGlobalStyle`
         font-size: 1.1.rem;
         cursor: pointer;
         padding: 1rem 2rem;
+        border: 3px solid #416CD5;
         background: transparent;
         color: yellow;
-        border: 3px solid #416CD5;
         transition: all 0.5s ease;
+        font-family: 'Inter', sans-serif;
         &:hover{
             background-color: #23d997;
             color: white;

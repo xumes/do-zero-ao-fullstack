@@ -9,7 +9,7 @@ import Card from '../components/Card'
 import PortfolioDetail from '../components/PortfolioDetail'
 import {useApi} from '../hooks/useApi'
 
-import {motion} from 'framer-motion'
+import {motion, AnimatePresence, AnimateSharedLayout} from 'framer-motion'
 import {pageAnimation} from '../animation'
 
 const Portfolio = () => {
@@ -24,27 +24,39 @@ const Portfolio = () => {
             exit='exit'
             variants={pageAnimation}
         >
-            {slug && <PortfolioDetail slug={slug} />}
-            <Hide>
-                <CardList>
-                    {data?.data?.map(project => {
-                        return( <Card key={project.slug} project={project}/> )
-                    })}
-                </CardList>
-            </Hide>
+            <AnimateSharedLayout type='crossfade'>
+                <AnimatePresence>
+                    {slug && <PortfolioDetail slug={slug} />}
+                </AnimatePresence>
+
+                <Hide>
+                    <CardList>
+                        {data?.data?.map(project => {
+                            return( <Card key={project.slug} project={project}/> )
+                        })}
+                    </CardList>
+                </Hide>
+            </AnimateSharedLayout>
+
             <ScrollTop />
         </PortfolioList>
     )
 }
 
-const Hide = styled.div`
-    overflow: hidden;
-`;
-
 const PortfolioList = styled(motion.div)`
     min-height: 100vh;
     overflow: hidden;
     padding: 5rem 10rem;
+    @media (max-width: 1300px) {
+    padding: 2rem 2rem;
+    }
+    h2 {
+        padding: 1rem 0rem;
+    }
+`;
+
+const Hide = styled.div`
+    overflow: hidden;
 `;
 
 const CardList = styled.div`
