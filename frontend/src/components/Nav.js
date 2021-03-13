@@ -11,10 +11,13 @@ import {Link, useLocation} from 'react-router-dom'
 import Userfront from '@userfront/react'
 import {LogoutButton} from './auth/Authentication'
 
+import useWindowDimensions from '../hooks/useWindowDimensions'
+
 Userfront.init('9ny8dvbd')
 
 const Nav = () => {
     const { pathname } = useLocation()
+    const { height, width } = useWindowDimensions();
 
     const menuOptions = {
         about: '<About Me />',
@@ -54,7 +57,7 @@ const Nav = () => {
                 </li>
 
                 {
-                    !Userfront.accessToken() && (
+                    width > 600 && !Userfront.accessToken() && (
                         <>
                             <li>
                                 <Link to='/login'>Login</Link>
