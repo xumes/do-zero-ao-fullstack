@@ -109,7 +109,7 @@ const StyledNav = styled.nav`
         position: relative;
         font-family: "Jura", sans-serif;
         a{
-        font-size: 1.3rem;
+        font-size: 1.2rem;
         }
     }
     @media (max-width: 1300px) {
