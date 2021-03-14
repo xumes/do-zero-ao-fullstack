@@ -1,11 +1,13 @@
-import React from 'react'
-import AboutSection from '../components/AboutSection'
-import ServicesSection from '../components/ServicesSection'
+import React, { lazy, Suspense }  from 'react'
 
 import {motion} from 'framer-motion'
 import {pageAnimation} from '../animation'
 
-import ScrollTop from '../components/ScrollTop'
+const AboutSection = lazy(() => import('../components/AboutSection'));
+const ServicesSection = lazy(() => import('../components/ServicesSection'));
+const ScrollTop = lazy(() => import('../components/ScrollTop'));
+
+const renderLoader = () => <p>Loading</p>;
 
 const AboutUs = () => {
     return(
@@ -15,9 +17,15 @@ const AboutUs = () => {
             exit='exit'
             variants={pageAnimation}
             >
-            <AboutSection />
-            <ServicesSection />
-            <ScrollTop />
+            <Suspense fallback={renderLoader()}>
+                <AboutSection />
+            </Suspense>
+            <Suspense fallback={renderLoader()}>
+                <ServicesSection />
+            </Suspense>
+            <Suspense fallback={renderLoader()}>
+                <ScrollTop />
+            </Suspense>
         </motion.div>
     )
 }
