@@ -19,11 +19,7 @@ const AboutUs = () => {
             >
             <Suspense fallback={renderLoader()}>
                 <AboutSection />
-            </Suspense>
-            <Suspense fallback={renderLoader()}>
                 <ServicesSection />
-            </Suspense>
-            <Suspense fallback={renderLoader()}>
                 <ScrollTop />
             </Suspense>
         </motion.div>
