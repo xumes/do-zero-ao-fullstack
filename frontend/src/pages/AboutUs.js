@@ -17,11 +17,9 @@ const AboutUs = () => {
             exit='exit'
             variants={pageAnimation}
             >
-            <Suspense fallback={renderLoader()}>
-                <AboutSection />
-                <ServicesSection />
-                <ScrollTop />
-            </Suspense>
+            <AboutSection />
+            <ServicesSection />
+            <ScrollTop />
         </motion.div>
     )
 }
