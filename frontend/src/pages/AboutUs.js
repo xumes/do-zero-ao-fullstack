@@ -1,13 +1,11 @@
-import React, { lazy, Suspense }  from 'react'
+import React from 'react'
 
 import {motion} from 'framer-motion'
 import {pageAnimation} from '../animation'
 
-const AboutSection = lazy(() => import('../components/AboutSection'));
-const ServicesSection = lazy(() => import('../components/ServicesSection'));
-const ScrollTop = lazy(() => import('../components/ScrollTop'));
-
-const renderLoader = () => <p>Loading</p>;
+import AboutSection from '../components/AboutSection'
+import ServicesSection  from '../components/ServicesSection'
+import ScrollTop from '../components/ScrollTop'
 
 const AboutUs = () => {
     return(
