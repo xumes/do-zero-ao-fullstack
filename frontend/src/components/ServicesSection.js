@@ -1,5 +1,7 @@
-import React, { lazy, Suspense } from 'react'
+import React from 'react'
 import styled from 'styled-components'
+
+import ReactPlayer from 'react-player'
 
 // Import icons
 import { faGithubSquare } from '@fortawesome/free-brands-svg-icons'
@@ -10,10 +12,6 @@ import { About, Description } from '../styles'
 
 import {scrollReveal} from '../animation'
 import {useScroll} from '../hooks/useScroll'
-
-const ReactPlayer = lazy(() => import('react-player'));
-
-const renderLoader = () => <p>Loading</p>;
 
 const ServicesSection = () => {
     const [element, controls] = useScroll()
@@ -60,12 +58,10 @@ const ServicesSection = () => {
             </Cards>
         </Description>
         <Video>
-        <Suspense fallback={renderLoader()}>
             <ReactPlayer
                 width='100%'
                 url='https://youtu.be/ClvFciFWSbo'
             />
-        </Suspense>
         </Video>
     </Services>
     )
