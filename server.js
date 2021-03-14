@@ -1,10 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const shrinkRay = require('shrink-ray-current');
 require('dotenv').config();
 
 const api = require('./backend/routes');
 
 const app = express();
+
+app.use(shrinkRay());
 
 app.use(bodyParser.json());
 
