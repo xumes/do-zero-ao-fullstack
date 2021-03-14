@@ -46,6 +46,7 @@ const AboutSection = () => {
                     <img alt='Reginaldo Santos' src={profile} />
                 </motion.div>
             </Image>
+            <Wave />
         </About>
     )
 }
