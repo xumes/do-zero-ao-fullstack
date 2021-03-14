@@ -61,6 +61,7 @@ const ServicesSection = () => {
             <ReactPlayer
                 width='100%'
                 url='https://youtu.be/ClvFciFWSbo'
+                origin='http://reginaldosantos.com.br'
             />
         </Video>
     </Services>
