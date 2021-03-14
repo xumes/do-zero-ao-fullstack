@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const shrinkRay = require('shrink-ray-current');
+// const shrinkRay = require('shrink-ray-current');
 const helmet = require('helmet')
 require('dotenv').config();
 
@@ -8,7 +8,7 @@ const api = require('./backend/routes');
 
 const app = express();
 
-app.use(shrinkRay());
+// app.use(shrinkRay());
 
 app.use(helmet());
 

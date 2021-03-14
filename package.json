@@ -27,16 +27,11 @@
     "helmet": "^4.4.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.8",
-    "shrink-ray-current": "^4.1.2",
     "slug": "^4.0.2"
   },
   "devDependencies": {
     "concurrently": "^5.3.0",
     "nodemon": "^2.0.6"
-  },
-  "optionalDependencies": {
-    "iltorb": "~2.0.0",
-    "node-zopfli-es": "~1.0.3"
   },
   "engines": {
     "node": "12.x"
