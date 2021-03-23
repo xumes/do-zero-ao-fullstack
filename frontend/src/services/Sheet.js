@@ -10,6 +10,8 @@ export const save = (data) => {
         data
     };
 
+    console.log("spreadsheet config", config)
+
     return axios(config)
         .then(res => {
             console.log("Dados da planilha", res)
