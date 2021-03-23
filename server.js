@@ -10,7 +10,7 @@ const app = express();
 
 app.use(shrinkRay());
 
-app.use(helmet());
+// app.use(helmet());
 
 app.use(bodyParser.json());
 
