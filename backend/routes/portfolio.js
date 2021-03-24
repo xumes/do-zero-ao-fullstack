@@ -36,7 +36,22 @@ router.get('/', async (req, res) => {
 
         res.json({
             success: true,
-            data: portfolio
+            data: portfolio.sort((a, b) => {
+                const createdA = a.createdAt;
+                const createdB = b.createdAt;
+
+                let comparison = 0
+
+                // I am comparing using reverse order (newest firt)
+                if (createdA > createdB) {
+                    comparison = -1
+                }
+                else {
+                    comparison = 1
+                }
+
+                return comparison
+            })
         })
     }catch(err){
         res.json({
